@@ -30,7 +30,6 @@ namespace SacrementPlanner.Pages.Meetings
         // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            Meeting.Speakers = [];
             if (!ModelState.IsValid)
             {
                 return Page();

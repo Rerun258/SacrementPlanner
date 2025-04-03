@@ -55,6 +55,26 @@
                 <span asp-validation-for="Meeting.ClosingPrayer" class="text-danger"></span>
             </div>
 
+            <label asp-for="Meeting.Speakers" class="control-label"></label>
+            <table class="table">
+                <tr>
+                    <th>Name</th>
+                    <th>Subject</th>
+                </tr>
+
+				@for (int i = 0; i < 3; i++)
+				{
+					<tr>
+						<td>
+                            <input name="Meeting.Speakers[@i].Name" class="form-control"/>
+						</td>
+						<td>
+                            <input name="Meeting.Speakers[@i].Subject" class="form-control"/>
+						</td>
+					</tr>
+				}
+			</table>
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

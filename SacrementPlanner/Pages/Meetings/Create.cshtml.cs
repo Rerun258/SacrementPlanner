@@ -1,44 +1,50 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using SacrementPlanner.Data;
 using SacrementPlanner.Models;
 
 namespace SacrementPlanner.Pages.Meetings
 {
-    public class CreateModel : PageModel
-    {
-        private readonly SacrementPlanner.Data.SacrementPlannerContext _context;
+   public class CreateModel : PageModel
+   {
+      private readonly SacrementPlanner.Data.SacrementPlannerContext _context;
 
-        public CreateModel(SacrementPlanner.Data.SacrementPlannerContext context)
-        {
-            _context = context;
-        }
+      public CreateModel(SacrementPlanner.Data.SacrementPlannerContext context)
+      {
+         _context = context;
+      }
 
-        public IActionResult OnGet()
-        {
+      [BindProperty]
+      public Meeting Meeting { get; set; } = new Meeting();
+
+      public IActionResult OnGet()
+      {
+         // Initialize with at least one empty speaker if not already populated
+         if (Meeting.Speakers.Count == 0)
+         {
+            Meeting.Speakers.Add(new Speaker());
+         }
+         return Page();
+      }
+
+      public IActionResult OnPostAddSpeaker()
+      {
+         // Add a new blank speaker to the list
+         Meeting.Speakers.Add(new Speaker());
+         return Page();
+      }
+
+      public async Task<IActionResult> OnPostSubmitAsync()
+      {
+         if (!ModelState.IsValid)
+         {
             return Page();
-        }
+         }
 
-        [BindProperty]
-        public Meeting Meeting { get; set; } = default!;
+         // Save meeting and speakers to database
+         _context.Meeting.Add(Meeting);
+         await _context.SaveChangesAsync();
 
-        // For more information, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
-        {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
-            _context.Meeting.Add(Meeting);
-            await _context.SaveChangesAsync();
-
-            return RedirectToPage("./Index");
-        }
-    }
+         return RedirectToPage("./Index");
+      }
+   }
 }

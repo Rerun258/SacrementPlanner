@@ -43,7 +43,7 @@ namespace SacrementPlanner.Models
         [RegularExpression(@"^.+\s?#\d+$", ErrorMessage = "Intermediate Hymn must follow the format 'Hymn name #number' (e.g., 'Come Unto Jesus #42').")]
         public string? IntermediateNumber { get; set; }
 
-        public ICollection<Speaker> Speakers { get; set; } = new List<Speaker>();
+        public List<Speaker> Speakers { get; set; } = new List<Speaker>();
     }
 }
 

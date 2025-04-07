@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SacrementPlanner.Data;
 
@@ -11,9 +12,11 @@ using SacrementPlanner.Data;
 namespace SacrementPlanner.Migrations
 {
     [DbContext(typeof(SacrementPlannerContext))]
-    partial class SacrementPlannerContextModelSnapshot : ModelSnapshot
+    [Migration("20250406000505_UnknownMigration")]
+    partial class UnknownMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

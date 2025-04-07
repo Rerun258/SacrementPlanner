@@ -1,6 +1,5 @@
-html {
-  font-size: 14px;
-}
+/* Base Styling */
+
 
 @media (min-width: 768px) {
   html {
@@ -8,24 +7,61 @@ html {
   }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+/* Ensure full viewport height */
+html, body {
+   height: 100%;
+   margin: 0;
+   display: flex;
+   flex-direction: column;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+
+
+
+
+
+
+/* Button Styling */
+.btn {
+  border-radius: 50px; /* Rounded buttons */
+  transition: transform 0.2s, background-color 0.2s ease; /* Interactive effect */
 }
 
-body {
-  margin-bottom: 60px;
+.btn:hover {
+  transform: scale(1.05); /* Subtle hover effect */
+  background-color: #007bff !important; /* Consistent hover color */
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+.btn:focus, .btn:active:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #198754; /* Refreshed focus color */
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+/* Table Styling */
+.table {
+  background-color: white;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
+
+.table th {
+  background-color: #198754; /* Accent color */
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.table td {
+  padding: 0.75rem;
+}
+
+/* Placeholder Styling */
+.form-floating > .form-control::placeholder {
+  color: #6c757d; /* Subtle placeholder */
+  text-align: left; /* Standard alignment */
+}
+
+.form-floating > .form-control:focus::placeholder {
+  color: #007bff; /* Match input focus color */
+}
+

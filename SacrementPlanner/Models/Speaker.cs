@@ -9,11 +9,11 @@ namespace SacrementPlanner.Models
         [Required]
         [StringLength(100, ErrorMessage = "Speaker name cannot exceed 100 characters.")]
         [RegularExpression(@"^[^\d]+$", ErrorMessage = "Speaker name cannot contain numbers.")]
-        public string Name { get; set; }
+        public string ?Name { get; set; }
 
         [Required]
         [StringLength(200, ErrorMessage = "Subject cannot exceed 200 characters.")]
-        public string Subject { get; set; }
+        public string ?Subject { get; set; }
 
         [Required]
         public int MeetingId { get; set; }

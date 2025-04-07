@@ -10,7 +10,7 @@ namespace SacrementPlanner.Models
         [Required]
         [DataType(DataType.Date)]
         [Display(Name = "Meeting Date")]
-        [SundayOnly]
+        
         public DateTime Date { get; set; }
 
         [Required]
